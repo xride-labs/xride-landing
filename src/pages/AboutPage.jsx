@@ -36,7 +36,7 @@ export default function AboutPage() {
             "Build reputation through verified ride history and community contributions.",
           ].map((item, i) => (
             <li key={i} className="flex gap-2">
-              <span className="text-(--accent-red) mt-0.5 shrink-0">›</span>
+              <span className="text-[#FF2D2D] mt-0.5 shrink-0">›</span>
               <span>{item}</span>
             </li>
           ))}
@@ -58,7 +58,7 @@ export default function AboutPage() {
           collaborators who believe in what we are building. Reach out at{" "}
           <a
             href="mailto:hello@xride-labs.in"
-            className="text-(--accent-red) hover:underline"
+            className="text-[#FF2D2D] hover:underline"
           >
             hello@xride-labs.in
           </a>{" "}
@@ -67,7 +67,7 @@ export default function AboutPage() {
             href="https://zoomies.xride-labs.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-(--accent-teal) hover:underline"
+            className="text-[#00FFD1] hover:underline"
           >
             zoomies.xride-labs.in
           </a>{" "}
@@ -82,7 +82,7 @@ export default function AboutPage() {
           Email:{" "}
           <a
             href="mailto:hello@xride-labs.in"
-            className="text-(--accent-red) hover:underline"
+            className="text-[#FF2D2D] hover:underline"
           >
             hello@xride-labs.in
           </a>
@@ -90,7 +90,7 @@ export default function AboutPage() {
           Website:{" "}
           <a
             href="https://xride-labs.in"
-            className="text-(--accent-red) hover:underline"
+            className="text-[#FF2D2D] hover:underline"
           >
             xride-labs.in
           </a>

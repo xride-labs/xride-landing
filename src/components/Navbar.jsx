@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   AnimatePresence,
-  motion,
+  motion as Motion,
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-9999 flex items-center justify-between px-6 md:px-12 lg:px-24 py-6 md:py-7 transition-all duration-300 pointer-events-none">
+      <nav className="fixed top-0 left-0 right-0 z-[9999] flex items-center justify-between px-6 md:px-12 lg:px-24 py-8 md:py-12 transition-all duration-300 pointer-events-none">
         {/* ─── Left: Logo badge (always fixed) ─── */}
         <div className="flex pointer-events-auto">
           <Link
@@ -60,7 +60,7 @@ export default function Navbar() {
         >
           <div className="flex-1 flex justify-center h-full">
             {/* ─── Centre: Navigation pill cluster ─── */}
-            <div className="hidden sm:flex items-center gap-3 md:gap-5 rounded-full px-4 py-3 bg-[rgba(17,17,17,0.7)] border border-[rgba(255,255,255,0.06)] shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[10px]">
+            <div className="hidden sm:flex items-center gap-6 md:gap-10 rounded-full px-6 py-4 bg-[rgba(17,17,17,0.7)] border border-[rgba(255,255,255,0.06)] shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[10px]">
               {/* Home */}
               <Link
                 to="/"
@@ -90,7 +90,7 @@ export default function Navbar() {
                   "ff-display flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-200 hover:text-white hover:scale-105",
                   location.pathname === "/notes"
                     ? "text-white bg-white/5"
-                    : "text-(--text-muted)",
+                    : "text-[var(--text-muted)]",
                 )}
               >
                 notes
@@ -126,15 +126,15 @@ export default function Navbar() {
       {/* ─── Floating Centered Navbar (Aceternity style) ─── */}
       <AnimatePresence mode="wait">
         {scrolled && (
-          <motion.div
+          <Motion.div
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className="fixed top-6 inset-x-0 mx-auto z-8888 flex items-center justify-center pointer-events-none"
           >
-            <div className="flex items-center justify-center gap-4 sm:gap-6 rounded-full px-4 py-2.5 pointer-events-auto backdrop-blur-xl bg-[rgba(10,10,10,0.85)] border border-[rgba(255,255,255,0.1)] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-6 sm:gap-10 rounded-full px-6 py-3 pointer-events-auto backdrop-blur-xl bg-[rgba(10,10,10,0.85)] border border-[rgba(255,255,255,0.1)] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center gap-6 sm:gap-8">
                 <Link
                   to="/"
                   className={cn(
@@ -159,7 +159,7 @@ export default function Navbar() {
                   href="https://zoomies.xride-labs.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold text-neutral-400 transition-all duration-200 hover:bg-[rgba(0,255,204,0.1)] hover:text-(--accent-teal)"
+                  className="flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold text-neutral-400 transition-all duration-200 hover:bg-[rgba(0,255,204,0.1)] hover:text-[var(--accent-teal)]"
                 >
                   zoomies ↗
                 </a>
@@ -182,7 +182,7 @@ export default function Navbar() {
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
               </a>
             </div>
-          </motion.div>
+          </Motion.div>
         )}
       </AnimatePresence>
     </>

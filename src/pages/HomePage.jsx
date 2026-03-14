@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 
 export default function HomePage() {
   return (
-    <>
+    <main className="w-full">
       <Hero />
       <AnnouncementCard />
       <Products />
@@ -16,6 +16,6 @@ export default function HomePage() {
       <BeliefsCarousel />
       <Contact />
       <Footer />
-    </>
+    </main>
   );
 }

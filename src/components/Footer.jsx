@@ -1,10 +1,6 @@
-import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion as Motion } from "framer-motion";
 import { FooterArtSVG } from "../assets/svg/FooterArtSVG";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const footerLinks = [
   { label: "Twitter", href: "https://twitter.com/xridelabs" },
@@ -22,108 +18,99 @@ const legalLinks = [
 ];
 
 export default function Footer() {
-  const footerRef = useRef(null);
-  const linksRef = useRef([]);
-  const rightArtRef = useRef(null);
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Stagger links
-      gsap.fromTo(
-        linksRef.current.filter(Boolean),
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.1,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: { trigger: footerRef.current, start: "top 85%" },
-        },
-      );
-
-      // Right art slide in
-      if (rightArtRef.current) {
-        gsap.fromTo(
-          rightArtRef.current,
-          { x: 100, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: { trigger: footerRef.current, start: "top 85%" },
-          },
-        );
-      }
-    }, footerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
 
   return (
-    <footer
-      ref={footerRef}
-      className="relative mx-4 md:mx-6 bg-[var(--footer-bg)] rounded-t-3xl mt-0"
+    <Motion.footer
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={containerVariants}
+      className="relative w-full bg-[#030303] border-t border-white/5 shadow-[0_-20px_40px_rgba(0,0,0,0.8)] mt-0 overflow-hidden"
     >
-      <div className="grid grid-cols-1 md:grid-cols-[58%_42%] px-8 md:px-14 lg:px-16 pt-20 md:pt-28 pb-16">
-        {/* Left column: Large links */}
-        <div>
-          <div className="flex flex-col gap-3 md:gap-4">
-            {footerLinks.map((link, i) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                ref={(el) => (linksRef.current[i] = el)}
-                className="ff-display font-bold block leading-[1.15] text-[clamp(32px,4.5vw,56px)] text-white underline underline-offset-[6px] decoration-[#333] decoration-1 transition-all duration-200 hover:text-[var(--accent-red)] hover:translate-x-2.5 hover:decoration-[var(--accent-red)]"
-              >
-                {link.label}
-              </a>
-            ))}
+      <div className="section-shell">
+        <div className="section-inner-wide relative z-10 grid w-full grid-cols-1 pb-16 pt-20 md:grid-cols-[58%_42%] md:pt-28">
+          {/* Left column: Large links */}
+          <div className="flex flex-col">
+            <div className="flex flex-col gap-3 md:gap-4">
+              {footerLinks.map((link) => (
+                <Motion.a
+                  variants={itemVariants}
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ff-display font-medium block leading-[1.15] text-[clamp(32px,4.5vw,56px)] text-white/90 hover:text-white transition-all duration-300 hover:translate-x-3"
+                >
+                  {link.label}
+                </Motion.a>
+              ))}
+            </div>
+
+            {/* Email pill */}
+            <Motion.a
+              variants={itemVariants}
+              href="mailto:hello@xride-labs.in"
+              className="mt-16 md:mt-20 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[14px] font-bold self-start transition-all duration-300 bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+            >
+              hello@xride-labs.in →
+            </Motion.a>
           </div>
 
-          {/* Email pill */}
-          <a
-            href="mailto:hello@xride-labs.in"
-            className="btn btn-dark mt-16 md:mt-20 inline-flex"
+          {/* Right column: Decorative hatching */}
+          <Motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="hidden md:flex hatching rounded-2xl items-center justify-center relative mt-8 md:mt-0 min-h-[320px] border border-white/5 overflow-hidden"
           >
-            hello@xride-labs.in →
-          </a>
-        </div>
-
-        {/* Right column: Decorative hatching */}
-        <div
-          ref={rightArtRef}
-          className="hidden md:flex hatching rounded-xl items-center justify-center relative mt-8 md:mt-0 min-h-[320px]"
-        >
-          <FooterArtSVG />
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[#FF2D2D]/5 to-transparent pointer-events-none" />
+            <FooterArtSVG />
+          </Motion.div>
         </div>
       </div>
 
       {/* Legal links row */}
-      <div className="mx-8 md:mx-14 lg:mx-16 py-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-[rgba(255,255,255,0.07)]">
-        {legalLinks.map((link) => (
-          <Link
-            key={link.label}
-            to={link.to}
-            className="ff-body text-[13px] text-(--text-muted) hover:text-white transition-colors duration-200"
-          >
-            {link.label}
-          </Link>
-        ))}
+      <div className="section-shell border-t border-[rgba(255,255,255,0.07)]">
+        <div className="section-inner-wide flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6 lg:justify-start">
+          {legalLinks.map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
+              className="ff-body text-[13px] text-[var(--text-muted)] transition-colors duration-200 hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="mx-8 md:mx-14 lg:mx-16 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[rgba(255,255,255,0.07)]">
-        <span className="text-[13px] text-[var(--text-muted)]">
-          © 2025, Xride Labs. Riders first.
-        </span>
-        <span className="text-[13px] underline text-[var(--text-muted)] underline-offset-4">
-          Never Stop Riding
-        </span>
+      <div className="section-shell relative z-10 border-t border-white/10">
+        <div className="section-inner-wide flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
+          <span className="text-[13px] text-white/40">
+            © 2026, Xride Labs. Riders first.
+          </span>
+          <span className="text-[13px] uppercase tracking-widest text-white/40">
+            Never Stop Riding
+          </span>
+        </div>
       </div>
-    </footer>
+    </Motion.footer>
   );
 }

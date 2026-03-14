@@ -51,24 +51,22 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto px-6 pt-28 pb-32">
+    <div className="page-shell max-w-4xl">
       {/* Back */}
       <Link
         to="/"
-        className="ff-body text-[14px] inline-block mb-10 transition-colors duration-200 hover:text-white text-(--text-muted)"
+        className="ff-body mb-10 inline-block text-[14px] text-[var(--text-muted)] transition-colors duration-200 hover:text-white"
       >
         ← Back
       </Link>
 
       {/* Header */}
-      <div ref={headerRef} className="opacity-0 mb-14">
-        <span className="text-[12px] ff-body font-medium px-4 py-1.5 rounded-full bg-(--accent-red) text-white">
+      <div ref={headerRef} className="section-header mb-14 opacity-0">
+        <span className="section-kicker inline-flex w-fit rounded-full bg-[var(--accent-red)] px-4 py-2 text-white">
           # contact
         </span>
-        <h1 className="ff-display font-black leading-[1.08] text-[clamp(36px,5.5vw,64px)] text-white mt-6">
-          Talk to us.
-        </h1>
-        <p className="ff-body mt-4 text-[18px] text-(--text-muted)">
+        <h1 className="section-title text-white">Talk to us.</h1>
+        <p className="section-copy max-w-[32rem] text-[var(--text-muted)]">
           We are a small team. We read every message.
         </p>
       </div>
@@ -80,20 +78,20 @@ export default function ContactPage() {
             key={i}
             ref={(el) => (cardsRef.current[i] = el)}
             href={ch.href}
-            className="group opacity-0 rounded-2xl bg-(--bg-card) border border-(--border) p-8 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-(--accent-red) transition-colors duration-200"
+            className="surface-panel group flex flex-col gap-4 rounded-[1.5rem] p-8 opacity-0 transition-colors duration-200 hover:border-[var(--accent-red)] sm:flex-row sm:items-center"
           >
             <div className="flex-1">
-              <p className="ff-body text-[12px] font-semibold text-(--text-muted) uppercase tracking-widest mb-1">
+              <p className="ff-body mb-1 text-[12px] font-semibold uppercase tracking-widest text-[var(--text-muted)]">
                 {ch.label}
               </p>
-              <p className="ff-display font-bold text-[20px] text-white group-hover:text-(--accent-red) transition-colors duration-200">
+              <p className="ff-display text-[20px] font-bold text-white transition-colors duration-200 group-hover:text-[var(--accent-red)]">
                 {ch.value}
               </p>
               <p className="ff-body text-[14px] text-[#666] mt-1 leading-[1.7]">
                 {ch.desc}
               </p>
             </div>
-            <span className="text-(--accent-red) text-2xl font-black transition-transform duration-200 group-hover:translate-x-1">
+            <span className="text-2xl font-black text-[var(--accent-red)] transition-transform duration-200 group-hover:translate-x-1">
               →
             </span>
           </a>
@@ -101,7 +99,7 @@ export default function ContactPage() {
       </div>
 
       {/* Response time note */}
-      <div className="mt-12 rounded-2xl border border-(--border) bg-[rgba(255,45,45,0.04)] p-7">
+      <div className="mt-12 rounded-[1.5rem] border border-[var(--border)] bg-[rgba(255,45,45,0.04)] p-7">
         <p className="ff-body text-[15px] text-[#777] leading-[1.8]">
           <strong className="text-white">Response time:</strong> We aim to
           respond to all enquiries within{" "}

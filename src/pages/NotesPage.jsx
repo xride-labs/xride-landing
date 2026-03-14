@@ -41,7 +41,7 @@ export default function NotesPage() {
   }, []);
 
   return (
-    <div className="max-w-215 mx-auto px-6 pt-28 pb-20">
+    <div className="page-shell max-w-5xl">
       {/* Back link */}
       <Link
         to="/"
@@ -51,25 +51,25 @@ export default function NotesPage() {
       </Link>
 
       {/* Header */}
-      <div ref={headerRef} className="opacity-0">
+      <div ref={headerRef} className="section-header opacity-0">
         {/* Tag pills */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="mb-4 flex flex-wrap gap-2">
           {["# announcement", "# from the founder"].map((tag) => (
             <span
               key={tag}
-              className="text-[12px] ff-body font-medium px-4 py-1.5 rounded-full bg-[var(--accent-red)] text-white"
+              className="section-kicker rounded-full bg-[var(--accent-red)] px-4 py-2 text-white"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <h1 className="ff-display font-black leading-[1.08] text-[clamp(40px,7vw,80px)] text-[var(--text)]">
+        <h1 className="section-title text-[var(--text)]">
           No<em className="letter">t</em>es from <em className="letter">t</em>he
           road.
         </h1>
 
-        <p className="ff-body mt-4 mb-14 text-[18px] text-[var(--text-muted)]">
+        <p className="section-copy mb-14 max-w-[32rem] text-[var(--text-muted)]">
           Things worth saying out loud.
         </p>
       </div>
@@ -80,7 +80,7 @@ export default function NotesPage() {
           <div
             key={i}
             ref={(el) => (cardsRef.current[i] = el)}
-            className="rounded-2xl transition-colors duration-200 bg-[var(--bg-card)] border border-[var(--border)] p-10 opacity-0 hover:border-[var(--accent-red)]"
+            className="surface-panel rounded-[1.5rem] p-10 opacity-0 transition-colors duration-200 hover:border-[var(--accent-red)]"
           >
             {/* Top row */}
             <div className="flex items-center gap-4 mb-4">

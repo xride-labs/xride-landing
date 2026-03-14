@@ -1,4 +1,4 @@
-﻿export function MotorcycleSVG() {
+export function MotorcycleSVG() {
   return (
     <svg
       viewBox="0 0 460 340"

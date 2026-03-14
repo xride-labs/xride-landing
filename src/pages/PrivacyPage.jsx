@@ -79,7 +79,7 @@ export default function PrivacyPage() {
           account and associated data by contacting us at{" "}
           <a
             href="mailto:hello@xride-labs.in"
-            className="text-(--accent-red) hover:underline"
+            className="text-[#FF2D2D] hover:underline"
           >
             hello@xride-labs.in
           </a>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
           To exercise any of these rights, contact us at{" "}
           <a
             href="mailto:hello@xride-labs.in"
-            className="text-(--accent-red) hover:underline"
+            className="text-[#FF2D2D] hover:underline"
           >
             hello@xride-labs.in
           </a>

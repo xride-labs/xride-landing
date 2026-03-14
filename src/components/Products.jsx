@@ -1,49 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useState } from "react";
+import { motion as Motion } from "framer-motion";
 
 import { RiderVisualSVG } from "../assets/svg/RiderVisualSVG";
 import { EquipmentVisualSVG } from "../assets/svg/EquipmentVisualSVG";
 
 export default function Products() {
-  const sectionRef = useRef(null);
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        leftRef.current,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
-        },
-      );
-
-      gsap.fromTo(
-        rightRef.current,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          delay: 0.2,
-          scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
-        },
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   const handleNotify = (e) => {
     e.preventDefault();
@@ -51,118 +14,159 @@ export default function Products() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full min-h-screen flex items-center py-24 md:py-32 lg:py-40 bg-[var(--bg)]"
-    >
-      <div className="max-w-[1400px] w-full mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-16 items-stretch relative">
-        {/* LEFT: ZOOMIES */}
-        <div ref={leftRef} className="flex flex-col flex-1">
-          <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-3xl p-10 md:p-12 lg:p-14 shadow-2xl flex-1 flex flex-col justify-between transition-all hover:border-[rgba(255,45,45,0.4)] hover:shadow-[0_0_40px_rgba(255,45,45,0.1)] duration-500 min-h-[500px]">
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[rgba(255,45,45,0.1)] text-[#ff2d2d] font-mono text-[12px] font-bold">
-                  01
-                </span>
-                <span className="text-[13px] font-medium tracking-widest uppercase text-[var(--accent-red)]">
-                  Ride Tech
+    <section className="section-shell section-space-lg relative w-full overflow-hidden border-t border-white/5 bg-[#030303] text-white">
+      {/* Subtle top subtle flare */}
+      <div className="pointer-events-none absolute left-1/2 top-0 h-100 w-full -translate-x-1/2 rounded-full bg-white/2 blur-[120px]" />
+
+      {/* Header Area directly inside w-full */}
+      <div className="section-inner relative z-10">
+        {/* Header Area */}
+        <Motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="section-header mb-16 md:mb-24 lg:mb-28"
+        >
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span className="section-kicker">Current Focus</span>
+          </div>
+          <h2 className="section-title max-w-5xl text-white/95">
+            Building software and things for{" "}
+            <em className="letter font-light text-white/50">r</em>iders.
+          </h2>
+        </Motion.div>
+      </div>
+
+      <div className="section-inner-wide overflow-hidden rounded-[2rem] border border-white/10 bg-[#050505]">
+        <div className="grid min-h-[80vh] grid-cols-1 items-stretch border-b border-white/10 lg:grid-cols-2">
+          <Motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col justify-center bg-[#080808]/50 px-6 py-16 md:px-12 md:py-20 lg:px-20 lg:py-24"
+          >
+            <span className="section-kicker mb-6 self-start rounded-full border border-white/10 bg-white/2 px-4 py-2">
+              01 / Software
+            </span>
+
+            <h3 className="ff-display mb-6 max-w-[18ch] text-[clamp(2rem,4vw,4rem)] font-medium leading-[1.02] tracking-[-0.03em] text-white/96">
+              Zoomies is the operating system for riders.
+            </h3>
+
+            <p className="section-copy mb-10 max-w-[34rem]">
+              Track rides. Find clans. Coordinate group rides. Earn reputation.
+              Explore roads together. We are building the ultimate digital
+              companion for the open road.
+            </p>
+
+            <a
+              href="https://zoomies.xride-labs.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group self-start text-[13px] font-bold uppercase tracking-[0.2em] text-white transition-colors flex items-center gap-4"
+            >
+              <div className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 group-hover:border-white group-hover:bg-white group-hover:text-black transition-all duration-300">
+                <span className="group-hover:translate-x-0.5 transition-transform duration-300">
+                  →
                 </span>
               </div>
-
-              <h2 className="ff-display font-black leading-[1.15] text-white text-[clamp(28px,3.5vw,42px)]">
-                We are building the ul<em className="letter">t</em>imate ride
-                companion with{" "}
-                <span className="text-[var(--accent-red)] italic">
-                  Zoomies.
+              <span className="relative overflow-hidden">
+                <span className="inline-block transition-transform duration-300 group-hover:-translate-y-full">
+                  Explore Zoomies
                 </span>
-              </h2>
+                <span className="inline-block absolute left-0 top-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0 text-white/80">
+                  Explore Zoomies
+                </span>
+              </span>
+            </a>
+          </Motion.div>
 
-              <p className="ff-body mt-6 text-[16px] text-[var(--text-muted)] leading-[1.75]">
-                Zoomies is the operating system for riders. Track rides. Find
-                clans. Coordinate group rides. Earn reputation. Explore roads
-                together.
-              </p>
+          <Motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="group relative flex min-h-125 w-full items-center justify-center overflow-hidden border-t border-white/10 bg-linear-to-tr from-[#FF2D2D]/10 to-[#080808] p-8 md:p-12 lg:min-h-full lg:border-l lg:border-t-0 lg:p-20"
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
-              <a
-                href="https://zoomies.xride-labs.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-white mt-10 ff-display self-start inline-flex"
-              >
-                Explore Zoomies →
-              </a>
-            </div>
-
-            {/* Rider visual SVG */}
-            <div className="mt-10 md:mt-12 rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(255,45,45,0.1)] transition-all duration-300 hover:shadow-[0_0_35px_rgba(255,45,45,0.2)] aspect-video bg-[#050505] border border-[rgba(255,45,45,0.15)]">
+            {/* The SVG wrapper */}
+            <div className="relative z-10 w-full max-w-150 drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-700 group-hover:scale-[1.03]">
               <RiderVisualSVG />
             </div>
-          </div>
+          </Motion.div>
         </div>
 
-        {/* RIGHT: XRIDE SHOP */}
-        <div ref={rightRef} className="flex flex-col flex-1">
-          <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-3xl p-10 md:p-12 lg:p-14 shadow-2xl flex-1 flex flex-col justify-between transition-all hover:border-[rgba(0,255,209,0.3)] hover:shadow-[0_0_40px_rgba(0,255,209,0.08)] duration-500 min-h-[500px]">
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[rgba(0,255,209,0.1)] text-[#00FFD1] font-mono text-[12px] font-bold">
-                  02
-                </span>
-                <span className="text-[13px] font-medium tracking-widest uppercase text-[#00FFD1]">
-                  Travel & Gear
-                </span>
-              </div>
+        <div className="grid min-h-[80vh] grid-cols-1 items-stretch lg:grid-cols-2">
+          <Motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="group order-2 relative flex min-h-125 w-full items-center justify-center overflow-hidden border-t border-white/10 bg-linear-to-tr from-[#00FFD1]/10 to-[#080808] p-8 md:p-12 lg:order-1 lg:min-h-full lg:border-r lg:border-t-0 lg:p-20"
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
-              <h2 className="ff-display font-black leading-[1.15] text-white text-[clamp(28px,3.5vw,42px)]">
-                We are gearing up riders everywhere wi
-                <em className="letter">t</em>h{" "}
-                <span className="text-[var(--accent-teal)] italic">
-                  Xride Shop.
-                </span>
-              </h2>
-
-              <p className="ff-body mt-6 text-[16px] text-[var(--text-muted)] leading-[1.75]">
-                Premium riding gear, custom merchandise, and community designed.
-                Everything a rider needs.
-              </p>
-
-              {/* Coming Soon / Form */}
-              <div className="mt-8">
-                {submitted ? (
-                  <div className="px-5 py-4 rounded-xl border border-[rgba(0,255,209,0.3)] bg-[rgba(0,255,209,0.05)]">
-                    <p className="ff-body text-[15px] text-[#00FFD1] font-medium m-0">
-                      You are on the list! We&apos;ll notify you when we launch.
-                    </p>
-                  </div>
-                ) : (
-                  <form
-                    onSubmit={handleNotify}
-                    className="flex flex-col sm:flex-row gap-3"
-                  >
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your@email.com"
-                      required
-                      className="ff-body flex-1 rounded-xl px-5 py-3.5 text-[15px] outline-none transition-colors focus:border-[#00FFD1] bg-[#111] border border-[#2a2a2a] text-white"
-                    />
-                    <button
-                      type="submit"
-                      className="btn btn-solid text-[15px] px-6 py-3.5 whitespace-nowrap rounded-xl transition-all bg-[var(--accent-teal)] text-black font-bold"
-                    >
-                      Get Notified
-                    </button>
-                  </form>
-                )}
-              </div>
-            </div>
-
-            {/* Gear visual SVG */}
-            <div className="mt-10 md:mt-12 rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(0,255,209,0.1)] transition-all duration-300 hover:shadow-[0_0_35px_rgba(0,255,209,0.2)] aspect-video bg-[#050505] border border-[rgba(0,255,209,0.15)]">
+            {/* The SVG wrapper */}
+            <div className="relative z-10 w-full max-w-150 drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-700 group-hover:scale-[1.03]">
               <EquipmentVisualSVG />
             </div>
-          </div>
+          </Motion.div>
+
+          <Motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="order-1 flex flex-col justify-center bg-[#080808]/50 px-6 py-16 md:px-12 md:py-20 lg:order-2 lg:px-20 lg:py-24"
+          >
+            <span className="section-kicker mb-6 self-start rounded-full border border-white/10 bg-white/2 px-4 py-2">
+              02 / Physical
+            </span>
+
+            <h3 className="ff-display mb-6 max-w-[18ch] text-[clamp(2rem,4vw,4rem)] font-medium leading-[1.02] tracking-[-0.03em] text-white/96">
+              Gearing up riders everywhere with Xride Shop.
+            </h3>
+
+            <p className="section-copy mb-10 max-w-[34rem]">
+              Premium riding gear, custom merchandise, and community designed
+              apparel. Form follows function. Everything a modern rider needs.
+            </p>
+
+            <div className="w-full max-w-[34rem]">
+              {submitted ? (
+                <div className="rounded-2xl border border-white/10 bg-white/2 px-6 py-5">
+                  <p className="ff-body text-[15px] md:text-[16px] text-white/90 font-medium m-0 flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#00FFD1] animate-pulse" />
+                    You are on the list. We'll be in touch.
+                  </p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleNotify}
+                  className="flex flex-col sm:flex-row gap-3 w-full"
+                >
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                    className="ff-body flex-1 rounded-full border border-white/10 bg-white/5 px-6 py-4 text-[15px] text-white outline-none transition-all placeholder-white/30 focus:border-white/40"
+                  />
+                  <button
+                    type="submit"
+                    className="rounded-full bg-white px-8 py-4 text-[14px] font-bold uppercase tracking-[0.18em] whitespace-nowrap text-black transition-all duration-300 hover:scale-105 hover:bg-white/90"
+                  >
+                    Notify Me
+                  </button>
+                </form>
+              )}
+            </div>
+          </Motion.div>
         </div>
       </div>
     </section>

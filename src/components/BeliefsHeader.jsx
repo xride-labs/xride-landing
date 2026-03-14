@@ -1,57 +1,20 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import { motion as Motion } from "framer-motion";
 
 export default function BeliefsHeader() {
   const sectionRef = useRef(null);
-  const leftArtRef = useRef(null);
-  const rightArtRef = useRef(null);
-  const textRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-
-      tl.fromTo(
-        leftArtRef.current,
-        { x: -260, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.3, ease: "power3.out" },
-        0,
-      );
-
-      tl.fromTo(
-        rightArtRef.current,
-        { x: 260, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.3, ease: "power3.out" },
-        0,
-      );
-
-      tl.fromTo(
-        textRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        0.3,
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden flex items-center justify-center bg-[var(--bg)] min-h-[80vh] py-24 md:py-32 px-6 md:px-12"
+      className="section-shell section-space-lg relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#030303]"
     >
       {/* Left side illustration */}
-      <div
-        ref={leftArtRef}
+      <Motion.div
+        initial={{ x: -200, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none"
       >
         <svg
@@ -97,11 +60,14 @@ export default function BeliefsHeader() {
             fill="none"
           />
         </svg>
-      </div>
+      </Motion.div>
 
       {/* Right side illustration */}
-      <div
-        ref={rightArtRef}
+      <Motion.div
+        initial={{ x: 200, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
       >
         <svg
@@ -157,10 +123,16 @@ export default function BeliefsHeader() {
             fill="none"
           />
         </svg>
-      </div>
+      </Motion.div>
 
       {/* Centre content */}
-      <div ref={textRef} className="relative z-10 text-center max-w-3xl">
+      <Motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        className="section-inner relative z-10 flex w-full flex-col items-center justify-center text-center"
+      >
         {/* Sparkle / asterisk */}
         <div className="mb-8 flex justify-center">
           <svg
@@ -178,18 +150,18 @@ export default function BeliefsHeader() {
           </svg>
         </div>
 
-        <h2 className="ff-display font-black leading-[1.08] text-[clamp(42px,7vw,80px)] text-[var(--text)] tracking-[-0.02em]">
-          Why do we bui<em className="letter">l</em>d
+        <h2 className="section-title max-w-6xl text-white drop-shadow-2xl">
+          Why do we bui<em className="letter font-light text-[#FF2D2D]">l</em>d
           <br />
-          what we bui<em className="letter">l</em>d?
+          what we bui<em className="letter font-light text-[#FF2D2D]">l</em>d?
         </h2>
 
-        <p className="ff-body mt-8 md:mt-10 mx-auto text-[clamp(16px,2vw,18px)] text-[var(--text-muted)] max-w-[560px] leading-[1.7]">
+        <p className="section-copy mx-auto mt-8 max-w-[42rem] md:mt-10">
           We build because we ride. Every product we ship is born from a real
           problem we faced on the road. We do what we do because of the beliefs
           everyone at Xride Labs shares.
         </p>
-      </div>
+      </Motion.div>
     </section>
   );
 }

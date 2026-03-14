@@ -101,7 +101,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex items-center justify-center overflow-hidden"
+      className="section-shell section-space-lg relative flex min-h-screen items-center justify-center overflow-hidden"
       style={{ minHeight: "100vh", background: "var(--bg)" }}
     >
       {/* Graph paper grid (parallax) */}
@@ -111,7 +111,7 @@ export default function Hero() {
         style={{ height: "140%", top: "-20%" }}
       />
 
-      <div className="relative z-10 flex flex-col items-center text-center px-6 py-24">
+      <div className="section-inner relative z-10 flex flex-col items-center py-10 text-center">
         {/* Motorcycle Blueprint SVG */}
         <div
           ref={svgRef}
@@ -139,14 +139,8 @@ export default function Hero() {
         {/* Subtext */}
         <p
           ref={subtextRef}
-          className="ff-body mt-6"
-          style={{
-            fontSize: "18px",
-            color: "var(--text-muted)",
-            maxWidth: "520px",
-            lineHeight: 1.65,
-            opacity: 0,
-          }}
+          className="section-copy mt-6 max-w-[34rem]"
+          style={{ opacity: 0 }}
         >
           Xride Labs is the umbrella under which rider-first software and
           thriving two-wheel communities are built.
@@ -156,7 +150,7 @@ export default function Hero() {
         <a
           ref={ctaRef}
           href="mailto:hello@xride-labs.in"
-          className="btn btn-dark mt-10"
+          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[15px] font-bold cursor-pointer transition-all duration-300 bg-white text-black hover:scale-105 hover:shadow-[0_0_24px_rgba(255,255,255,0.4)] mt-10"
           style={{ opacity: 0 }}
         >
           hello@xride-labs.in →

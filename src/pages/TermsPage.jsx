@@ -81,7 +81,7 @@ export default function TermsPage() {
           purchases. All payments are handled through our authorised payment
           processors. Pricing and billing details will be clearly displayed
           before any charge is made. Refer to our{" "}
-          <a href="/refund" className="text-(--accent-red) hover:underline">
+          <a href="/refund" className="text-[#FF2D2D] hover:underline">
             Refund Policy
           </a>{" "}
           for cancellation and refund details.
@@ -114,7 +114,7 @@ export default function TermsPage() {
           For questions about these Terms, contact us at{" "}
           <a
             href="mailto:hello@xride-labs.in"
-            className="text-(--accent-red) hover:underline"
+            className="text-[#FF2D2D] hover:underline"
           >
             hello@xride-labs.in
           </a>

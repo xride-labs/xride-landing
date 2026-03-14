@@ -99,7 +99,7 @@ export default function RefundPage() {
           For refund-related queries, contact us at{" "}
           <a
             href="mailto:hello@xride-labs.in"
-            className="text-(--accent-red) hover:underline"
+            className="text-[#FF2D2D] hover:underline"
           >
             hello@xride-labs.in
           </a>
