@@ -47,21 +47,19 @@ export default function BeliefsHeader() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden flex items-center justify-center"
-      style={{ background: "var(--bg)", padding: "160px 24px" }}
+      className="relative overflow-hidden flex items-center justify-center bg-[var(--bg)] min-h-[80vh] py-24 md:py-32 px-6 md:px-12"
     >
       {/* Left side illustration */}
       <div
         ref={leftArtRef}
         className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none"
-        style={{ opacity: 0 }}
       >
         <svg
           width="300"
           height="400"
           viewBox="0 0 300 400"
           fill="none"
-          style={{ opacity: 0.22 }}
+          className="opacity-[0.22]"
         >
           {/* Wheel with spokes */}
           <circle
@@ -105,14 +103,13 @@ export default function BeliefsHeader() {
       <div
         ref={rightArtRef}
         className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none"
-        style={{ opacity: 0 }}
       >
         <svg
           width="300"
           height="400"
           viewBox="0 0 300 400"
           fill="none"
-          style={{ opacity: 0.22 }}
+          className="opacity-[0.22]"
         >
           {/* Gear */}
           <circle
@@ -163,13 +160,9 @@ export default function BeliefsHeader() {
       </div>
 
       {/* Centre content */}
-      <div
-        ref={textRef}
-        className="relative z-10 text-center max-w-3xl"
-        style={{ opacity: 0 }}
-      >
+      <div ref={textRef} className="relative z-10 text-center max-w-3xl">
         {/* Sparkle / asterisk */}
-        <div className="mb-6 flex justify-center">
+        <div className="mb-8 flex justify-center">
           <svg
             width="24"
             height="24"
@@ -185,28 +178,13 @@ export default function BeliefsHeader() {
           </svg>
         </div>
 
-        <h2
-          className="ff-display font-black leading-[1.08]"
-          style={{
-            fontSize: "clamp(48px, 8vw, 100px)",
-            color: "var(--text)",
-            letterSpacing: "-0.02em",
-          }}
-        >
+        <h2 className="ff-display font-black leading-[1.08] text-[clamp(42px,7vw,80px)] text-[var(--text)] tracking-[-0.02em]">
           Why do we bui<em className="letter">l</em>d
           <br />
           what we bui<em className="letter">l</em>d?
         </h2>
 
-        <p
-          className="ff-body mt-8 mx-auto"
-          style={{
-            fontSize: "18px",
-            color: "var(--text-muted)",
-            maxWidth: "520px",
-            lineHeight: 1.65,
-          }}
-        >
+        <p className="ff-body mt-8 md:mt-10 mx-auto text-[clamp(16px,2vw,18px)] text-[var(--text-muted)] max-w-[560px] leading-[1.7]">
           We build because we ride. Every product we ship is born from a real
           problem we faced on the road. We do what we do because of the beliefs
           everyone at Xride Labs shares.

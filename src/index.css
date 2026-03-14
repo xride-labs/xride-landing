@@ -50,6 +50,12 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+body.page-loading {
+    opacity: 1;
 }
 
 ::selection {

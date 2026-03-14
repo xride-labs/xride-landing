@@ -45,20 +45,12 @@ export default function ProductSection() {
       content: (
         <div className="flex flex-col h-full">
           {/* LEFT — ZOOMIES */}
-          <p className="text-xs font-mono mb-6" style={{ color: "#666" }}>
-            01.
-          </p>
-          <h2
-            className="ff-display font-black text-white leading-tight mb-8"
-            style={{ fontSize: "clamp(36px, 4.5vw, 64px)" }}
-          >
+          <p className="text-xs font-mono mb-6 text-[#666]">01.</p>
+          <h2 className="ff-display font-black text-white leading-tight mb-8 text-[clamp(36px,4.5vw,64px)]">
             We are building the ultimate ride companion with{" "}
-            <em className="letter" style={{ color: "#FF2D2D" }}>
-              Zoomies
-            </em>
-            .
+            <em className="letter text-[#FF2D2D]">Zoomies</em>.
           </h2>
-          <p className="ff-body text-base mb-6" style={{ color: "#666" }}>
+          <p className="ff-body text-base mb-6 text-[#666]">
             Zoomies is the operating system for riders. Track rides. Find clans.
             Coordinate group rides. Earn reputation. Explore roads together.
           </p>
@@ -66,32 +58,13 @@ export default function ProductSection() {
             href="https://zoomies.xride-labs.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost inline-block w-fit mt-auto"
-            style={{ fontSize: 14 }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#00FFD1";
-              e.currentTarget.style.boxShadow = "0 0 24px rgba(0,255,209,0.5)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "#333";
-              e.currentTarget.style.boxShadow = "none";
-            }}
+            className="btn btn-ghost inline-block w-fit mt-auto text-[14px] hover:border-[#00FFD1] hover:shadow-[0_0_24px_rgba(0,255,209,0.5)]"
           >
             Explore Zoomies →
           </a>
           {/* Visual placeholder */}
-          <div
-            className="mt-8 w-full aspect-video flex items-center justify-center"
-            style={{
-              border: "1px solid #FF2D2D",
-              borderRadius: 8,
-              background: "rgba(255,45,45,0.03)",
-            }}
-          >
-            <span
-              className="text-xs font-mono"
-              style={{ color: "rgba(255,45,45,0.4)" }}
-            >
+          <div className="mt-8 w-full aspect-video flex items-center justify-center border border-[#FF2D2D] rounded-lg bg-[rgba(255,45,45,0.03)]">
+            <span className="text-xs font-mono text-[rgba(255,45,45,0.4)]">
               [ RIDER VISUAL ]
             </span>
           </div>
@@ -102,38 +75,19 @@ export default function ProductSection() {
       content: (
         <div className="flex flex-col h-full">
           {/* RIGHT — XRIDE SHOP */}
-          <p className="text-xs font-mono mb-6" style={{ color: "#666" }}>
-            02.
-          </p>
-          <h2
-            className="ff-display font-black text-white leading-tight mb-8"
-            style={{ fontSize: "clamp(36px, 4.5vw, 64px)" }}
-          >
+          <p className="text-xs font-mono mb-6 text-[#666]">02.</p>
+          <h2 className="ff-display font-black text-white leading-tight mb-8 text-[clamp(36px,4.5vw,64px)]">
             We are gearing up riders everywhere with{" "}
-            <em className="letter" style={{ color: "#FF2D2D" }}>
-              Xride Shop
-            </em>
-            .
+            <em className="letter text-[#FF2D2D]">Xride Shop</em>.
           </h2>
-          <p className="ff-body text-base mb-8" style={{ color: "#666" }}>
+          <p className="ff-body text-base mb-8 text-[#666]">
             Premium riding gear, custom merchandise, and community designed
             apparel. Everything a rider needs.
           </p>
 
           {/* COMING SOON card */}
-          <div
-            className="p-8 mt-auto"
-            style={{
-              background: "#0f0f0f",
-              border: "1px solid #FF2D2D",
-              boxShadow: "0 0 24px rgba(255,45,45,0.5)",
-              borderRadius: 12,
-            }}
-          >
-            <p
-              className="text-xs font-mono tracking-[0.2em] uppercase mb-1"
-              style={{ color: "#FF2D2D" }}
-            >
+          <div className="p-8 mt-auto bg-[#0f0f0f] border border-[#FF2D2D] shadow-[0_0_24px_rgba(255,45,45,0.5)] rounded-xl">
+            <p className="text-xs font-mono tracking-[0.2em] uppercase mb-1 text-[#FF2D2D]">
               COMING SOON
             </p>
             <p className="ff-display font-bold text-white text-lg mb-4">
@@ -141,7 +95,7 @@ export default function ProductSection() {
             </p>
 
             {submitted ? (
-              <p className="text-sm" style={{ color: "#00FFD1" }}>
+              <p className="text-sm text-[#00FFD1]">
                 You're on the list. We'll notify you.
               </p>
             ) : (
@@ -152,17 +106,11 @@ export default function ProductSection() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="flex-1 bg-transparent px-4 py-3 text-sm text-white outline-none ff-body"
-                  style={{ border: "1px solid #1a1a1a", borderRight: "none" }}
+                  className="flex-1 bg-transparent px-4 py-3 text-sm text-white outline-none ff-body border border-[#1a1a1a] border-r-0"
                 />
                 <button
                   type="submit"
-                  className="ff-display font-bold text-xs px-5 py-3 uppercase tracking-wide transition-colors"
-                  style={{
-                    background: "#FF2D2D",
-                    color: "#fff",
-                    border: "1px solid #FF2D2D",
-                  }}
+                  className="ff-display font-bold text-xs px-5 py-3 uppercase tracking-wide transition-colors bg-[#FF2D2D] text-white border border-[#FF2D2D]"
                 >
                   Get notified →
                 </button>
@@ -177,11 +125,7 @@ export default function ProductSection() {
   return (
     <section
       ref={sectionRef}
-      className="section-pad"
-      style={{
-        borderTop: "1px solid #1a1a1a",
-        padding: "140px clamp(1.5rem, 6vw, 5rem)",
-      }}
+      className="section-pad border-t border-[#1a1a1a] py-[140px] px-[clamp(1.5rem,6vw,5rem)]"
     >
       <HoverEffect items={items} className="gap-0" />
     </section>

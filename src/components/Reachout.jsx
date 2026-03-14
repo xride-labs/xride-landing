@@ -50,23 +50,18 @@ export default function ContactSection() {
   return (
     <section
       ref={sectionRef}
-      className="section-pad"
-      style={{
-        background: "#0a0a0a",
-        padding: "160px clamp(1.5rem, 6vw, 5rem)",
-      }}
+      className="section-pad bg-[#0a0a0a] py-[160px] px-[clamp(1.5rem,6vw,5rem)]"
     >
       {/* Label */}
       <p
         ref={labelRef}
-        className="ff-body mb-8"
-        style={{ fontSize: 13, letterSpacing: "0.15em", color: "#666" }}
+        className="ff-body mb-8 text-[13px] tracking-[0.15em] text-[#666]"
       >
         Cold reachouts encouraged
       </p>
 
       {/* Headline — TextGenerateEffect */}
-      <div style={{ maxWidth: 1100 }}>
+      <div className="max-w-[1100px]">
         <TextGenerateEffect
           words="If any of our beliefs resonated with you, reach out. We would love to talk."
           className="ff-display font-black text-white"
@@ -98,10 +93,7 @@ export default function ContactSection() {
             href={s.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="link-hover text-sm ff-body transition-colors duration-200"
-            style={{ color: "#666" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#666")}
+            className="link-hover text-sm ff-body transition-colors duration-200 text-[#666] hover:text-white"
           >
             {s.label}
           </a>

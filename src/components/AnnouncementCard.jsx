@@ -21,24 +21,15 @@ export default function AnnouncementCard() {
   };
 
   return (
-    <div className="relative z-20 flex justify-center px-6 -mt-16 mb-10">
-      <div
-        className="relative rounded-2xl px-8 py-8 w-full"
-        style={{ maxWidth: 500, background: "var(--accent-red)" }}
-      >
+    <div className="relative z-20 flex justify-center px-6 md:px-12 -mt-12 md:-mt-16 mb-20 md:mb-28">
+      <div className="relative rounded-2xl px-8 md:px-10 py-8 md:py-10 w-full backdrop-blur-md bg-[#111]/80 border border-[#333] shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all hover:border-[var(--accent-red)] duration-300 max-w-[640px] group">
+        {/* Glow effect */}
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent-red)] to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl blur-lg -z-10" />
+
         {/* Close / dismiss */}
         <button
           onClick={handleDismiss}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full transition-colors"
-          style={{ color: "rgba(255,255,255,0.6)" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#fff";
-            e.currentTarget.style.background = "rgba(255,255,255,0.1)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "rgba(255,255,255,0.6)";
-            e.currentTarget.style.background = "transparent";
-          }}
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full transition-colors text-white/40 hover:text-[var(--accent-red)] hover:bg-white/5"
           aria-label="Dismiss announcement"
         >
           ✕
@@ -46,27 +37,19 @@ export default function AnnouncementCard() {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {["new note", "# zoomies", "# announcement"].map((tag) => (
-            <span
-              key={tag}
-              className="text-[11px] ff-body font-medium px-3 py-1 rounded-full"
-              style={{
-                background: "rgba(0,0,0,0.2)",
-                color: "rgba(255,255,255,0.85)",
-              }}
-            >
-              {tag}
-            </span>
-          ))}
+          <span className="text-[10px] uppercase tracking-wider font-mono px-2 py-1 rounded border border-[var(--accent-red)] text-[var(--accent-red)] bg-[var(--accent-red)]/5">
+            New Note
+          </span>
+          <span className="text-[10px] uppercase tracking-wider font-mono px-2 py-1 rounded border border-[#333] text-[#888]">
+            #Zoomies
+          </span>
         </div>
 
         {/* Body */}
-        <p
-          className="ff-body text-white text-[18px] font-medium"
-          style={{ lineHeight: 1.55 }}
-        >
-          We are building Zoomies — the operating system for every rider on the
-          road.
+        <p className="ff-display text-white text-[18px] md:text-[20px] font-medium leading-[1.4] pr-6">
+          We are building{" "}
+          <span className="text-(--accent-red)">Zoomies</span> — the
+          operating system for every rider on the road.
         </p>
       </div>
     </div>

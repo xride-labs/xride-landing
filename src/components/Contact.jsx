@@ -19,7 +19,6 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Illustration fade up
       gsap.fromTo(
         illustrationRef.current,
         { y: 30, opacity: 0 },
@@ -32,7 +31,6 @@ export default function Contact() {
         },
       );
 
-      // Word-by-word headline
       const words = headlineRef.current.querySelectorAll(".word");
       gsap.fromTo(
         words,
@@ -47,7 +45,6 @@ export default function Contact() {
         },
       );
 
-      // Buttons
       gsap.fromTo(
         buttonsRef.current,
         { y: 30, opacity: 0 },
@@ -70,15 +67,10 @@ export default function Contact() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col items-center text-center"
-      style={{ background: "var(--bg)", padding: "160px 24px" }}
+      className="relative flex flex-col items-center justify-center text-center bg-[var(--bg)] min-h-[80vh] py-24 md:py-32 px-6 md:px-12"
     >
       {/* Sketch illustration */}
-      <div
-        ref={illustrationRef}
-        className="relative mb-6"
-        style={{ opacity: 0 }}
-      >
+      <div ref={illustrationRef} className="relative mb-8 md:mb-10">
         <svg width="160" height="140" viewBox="0 0 160 140" fill="none">
           {/* Isometric cube */}
           <path
@@ -131,7 +123,6 @@ export default function Contact() {
             strokeWidth="0.3"
             opacity="0.3"
           />
-          {/* Left face hatching */}
           {[0, 1, 2, 3, 4, 5, 6].map((i) => (
             <line
               key={`lh${i}`}
@@ -144,7 +135,6 @@ export default function Contact() {
               opacity="0.2"
             />
           ))}
-          {/* Right face hatching */}
           {[0, 1, 2, 3, 4, 5, 6].map((i) => (
             <line
               key={`rh${i}`}
@@ -159,42 +149,20 @@ export default function Contact() {
           ))}
         </svg>
         {/* Notification badge */}
-        <div
-          className="absolute flex items-center justify-center rounded-full text-[10px] font-bold text-white ff-body"
-          style={{
-            top: 2,
-            right: 2,
-            width: 22,
-            height: 22,
-            background: "var(--accent-red)",
-          }}
-        >
+        <div className="absolute top-0.5 right-0.5 w-[22px] h-[22px] flex items-center justify-center rounded-full text-[10px] font-bold text-white ff-body bg-[var(--accent-red)]">
           1
         </div>
       </div>
 
       {/* Label */}
-      <p
-        className="ff-body mb-10"
-        style={{
-          fontSize: "14px",
-          color: "var(--text-muted)",
-          letterSpacing: "0.06em",
-        }}
-      >
+      <p className="ff-body mb-12 md:mb-14 text-[13px] text-[var(--text-muted)] tracking-[0.08em] uppercase">
         Cold reachouts encouraged
       </p>
 
-      {/* Headline — word-by-word stagger */}
+      {/* Headline */}
       <h2
         ref={headlineRef}
-        className="ff-display font-black leading-[1.05]"
-        style={{
-          fontSize: "clamp(40px, 7vw, 90px)",
-          color: "var(--text)",
-          letterSpacing: "-0.02em",
-          maxWidth: 1200,
-        }}
+        className="ff-display font-black leading-[1.05] text-[clamp(38px,6.5vw,80px)] text-[var(--text)] tracking-[-0.02em] max-w-[1200px]"
       >
         {headlineText.split(" ").map((word, i) => {
           let rendered = word;
@@ -218,11 +186,7 @@ export default function Contact() {
             );
 
           return (
-            <span
-              key={i}
-              className="word inline-block"
-              style={{ opacity: 0, marginRight: "0.28em" }}
-            >
+            <span key={i} className="word inline-block mr-[0.28em]">
               {rendered}
             </span>
           );
@@ -232,8 +196,7 @@ export default function Contact() {
       {/* Buttons */}
       <div
         ref={buttonsRef}
-        className="flex flex-wrap gap-4 mt-12 justify-center"
-        style={{ opacity: 0 }}
+        className="flex flex-wrap gap-4 mt-12 md:mt-14 justify-center"
       >
         <a
           href="https://twitter.com/xridelabs"
@@ -249,10 +212,7 @@ export default function Contact() {
       </div>
 
       {/* Social links */}
-      <div
-        className="flex flex-wrap gap-1 mt-8 justify-center items-center"
-        style={{ fontSize: "14px", color: "var(--text-muted)" }}
-      >
+      <div className="flex flex-wrap gap-1 mt-8 justify-center items-center text-[14px] text-[var(--text-muted)]">
         {socialLinks.map((link, i) => (
           <Fragment key={link.label}>
             {i > 0 && <span className="mx-2">·</span>}

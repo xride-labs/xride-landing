@@ -34,10 +34,7 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      className="noise-overlay min-h-screen"
-      style={{ background: "var(--bg)" }}
-    >
+    <div className="noise-overlay min-h-screen bg-[var(--bg)]">
       <Navbar />
       <Outlet />
     </div>

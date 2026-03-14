@@ -1,136 +1,190 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
+import { cn } from "../lib/utils";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (current) => {
+    // 50% height of heroin approximate ~ 300px
+    if (typeof current === "number") {
+      if (current > 300) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    }
+  });
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-[9999] flex items-center justify-between px-6 md:px-12 py-5"
-      style={{
-        background: scrolled ? "rgba(10, 10, 10, 0.85)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled
-          ? "1px solid rgba(255,255,255,0.06)"
-          : "1px solid transparent",
-        transition: "all 0.35s ease",
-      }}
-    >
-      {/* ─── Left: Logo badge ─── */}
-      <div className="flex flex-col items-start">
-        <div
-          className="ff-display flex flex-col items-center justify-center rounded-md px-2.5 py-1.5 leading-none"
-          style={{ background: "var(--accent-red)" }}
-        >
-          <span className="text-white font-black text-[12px] tracking-wider leading-[1.15]">
-            XRIDE
-          </span>
-          <span className="text-white font-black text-[12px] tracking-wider leading-[1.15]">
-            LABS
-          </span>
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-9999 flex items-center justify-between px-6 md:px-12 lg:px-24 py-6 md:py-7 transition-all duration-300 pointer-events-none">
+        {/* ─── Left: Logo badge (always fixed) ─── */}
+        <div className="flex pointer-events-auto">
+          <Link
+            to="/"
+            className="flex flex-col items-start hover:opacity-80 transition-opacity"
+          >
+            <div className="ff-display flex flex-col items-center justify-center rounded-md px-3 py-2 leading-none bg-[var(--accent-red)]">
+              <span className="text-white font-black text-[13px] tracking-wider leading-[1.1]">
+                XRIDE
+              </span>
+              <span className="text-white font-black text-[13px] tracking-wider leading-[1.1]">
+                LABS
+              </span>
+            </div>
+            <span className="text-[10px] mt-1.5 font-medium text-[var(--text-muted)]">
+              xride-labs.in
+            </span>
+          </Link>
         </div>
-        <span
-          className="text-[10px] mt-1"
-          style={{ color: "var(--text-muted)" }}
-        >
-          xride-labs.in
-        </span>
-      </div>
 
-      {/* ─── Centre: Navigation pill cluster ─── */}
-      <div
-        className="hidden sm:flex items-center gap-0.5 rounded-full px-1.5 py-1.5"
-        style={{
-          background: "rgba(17, 17, 17, 0.7)",
-          border: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        {/* Home */}
-        <Link
-          to="/"
-          className="ff-display flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[13px] font-bold transition-colors duration-200"
-          style={{
-            background: isHome ? "var(--accent-red)" : "transparent",
-            color: isHome ? "#fff" : "var(--text-muted)",
-          }}
+        {/* ─── Unscrolled Default Navbar (links & CTA on sides) ─── */}
+        <div
+          className={cn(
+            "flex items-center w-full justify-between pl-8 md:pl-16 pointer-events-auto transition-all duration-500",
+            scrolled
+              ? "opacity-0 -translate-y-4 pointer-events-none"
+              : "opacity-100 translate-y-0",
+          )}
         >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            stroke="none"
+          <div className="flex-1 flex justify-center h-full">
+            {/* ─── Centre: Navigation pill cluster ─── */}
+            <div className="hidden sm:flex items-center gap-3 md:gap-5 rounded-full px-4 py-3 bg-[rgba(17,17,17,0.7)] border border-[rgba(255,255,255,0.06)] shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[10px]">
+              {/* Home */}
+              <Link
+                to="/"
+                className={cn(
+                  "ff-display flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-200 hover:scale-105",
+                  isHome
+                    ? "text-white bg-[var(--accent-red)]"
+                    : "text-[var(--text-muted)] hover:text-white",
+                )}
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  stroke="none"
+                >
+                  <path d="M12 3l10 9h-3v9h-6v-6h-2v6H5v-9H2l10-9z" />
+                </svg>
+                home
+              </Link>
+
+              {/* Notes */}
+              <Link
+                to="/notes"
+                className={cn(
+                  "ff-display flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-200 hover:text-white hover:scale-105",
+                  location.pathname === "/notes"
+                    ? "text-white bg-white/5"
+                    : "text-(--text-muted)",
+                )}
+              >
+                notes
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold text-white shadow-sm shadow-red-500/20 bg-[var(--accent-red)]">
+                  1
+                </span>
+              </Link>
+
+              {/* Zoomies */}
+              <a
+                href="https://zoomies.xride-labs.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ff-display px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-200 hover:scale-105 rounded-full text-[var(--text-muted)] hover:text-[var(--accent-teal)] hover:bg-[rgba(0,255,204,0.05)]"
+              >
+                zoomies ↗
+              </a>
+            </div>
+          </div>
+
+          <div className="flex justify-end">
+            <a
+              href="mailto:hello@xride-labs.in"
+              className="hidden sm:inline-flex items-center ff-body text-[14px] font-semibold text-white rounded-full px-6 py-3 bg-[#111] border border-[#333] transition-all duration-300 hover:border-[var(--accent-red)] hover:shadow-[0_8px_30px_rgba(255,45,45,0.4)] hover:-translate-y-px"
+            >
+              hello@xride-labs.in{" "}
+              <span className="ml-2 font-black text-red-500">→</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* ─── Floating Centered Navbar (Aceternity style) ─── */}
+      <AnimatePresence mode="wait">
+        {scrolled && (
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="fixed top-6 inset-x-0 mx-auto z-8888 flex items-center justify-center pointer-events-none"
           >
-            <path d="M12 3l10 9h-3v9h-6v-6h-2v6H5v-9H2l10-9z" />
-          </svg>
-          home
-        </Link>
+            <div className="flex items-center justify-center gap-4 sm:gap-6 rounded-full px-4 py-2.5 pointer-events-auto backdrop-blur-xl bg-[rgba(10,10,10,0.85)] border border-[rgba(255,255,255,0.1)] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center gap-3">
+                <Link
+                  to="/"
+                  className={cn(
+                    "flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold transition-all duration-200 hover:bg-white/10 hover:text-white",
+                    isHome ? "text-white bg-white/5" : "text-neutral-400",
+                  )}
+                >
+                  home
+                </Link>
+                <Link
+                  to="/notes"
+                  className={cn(
+                    "flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold transition-all duration-200 hover:bg-white/10 hover:text-white",
+                    location.pathname === "/notes"
+                      ? "text-white bg-white/5"
+                      : "text-neutral-400",
+                  )}
+                >
+                  notes
+                </Link>
+                <a
+                  href="https://zoomies.xride-labs.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold text-neutral-400 transition-all duration-200 hover:bg-[rgba(0,255,204,0.1)] hover:text-(--accent-teal)"
+                >
+                  zoomies ↗
+                </a>
+              </div>
 
-        {/* Notes */}
-        <Link
-          to="/notes"
-          className="ff-display flex items-center gap-1.5 px-4 py-1.5 text-[13px] font-bold transition-colors duration-200 hover:text-white"
-          style={{
-            color:
-              location.pathname === "/notes" ? "#fff" : "var(--text-muted)",
-          }}
-        >
-          notes
-          <span
-            className="inline-flex items-center justify-center w-[18px] h-[18px] rounded-full text-[10px] font-bold text-white"
-            style={{ background: "var(--accent-red)" }}
-          >
-            1
-          </span>
-        </Link>
+              {/* Divider */}
+              <div className="h-6 w-px bg-white/10 hidden sm:block" />
 
-        {/* Zoomies */}
-        <a
-          href="https://zoomies.xride-labs.in"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ff-display px-4 py-1.5 text-[13px] font-bold transition-colors duration-200"
-          style={{ color: "var(--text-muted)" }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.color = "var(--accent-teal)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "var(--text-muted)")
-          }
-        >
-          zoomies ↗
-        </a>
-      </div>
-
-      {/* ─── Right: Email CTA ─── */}
-      <a
-        href="mailto:hello@xride-labs.in"
-        className="hidden sm:inline-flex items-center ff-body text-[13px] text-white rounded-full px-5 py-2.5"
-        style={{
-          background: "#111",
-          border: "1px solid #2a2a2a",
-          transition: "all 0.2s ease",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "var(--accent-red)";
-          e.currentTarget.style.boxShadow = "0 0 24px rgba(255,45,45,0.4)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "#2a2a2a";
-          e.currentTarget.style.boxShadow = "none";
-        }}
-      >
-        hello@xride-labs.in →
-      </a>
-    </nav>
+              {/* Glowing CTA Button */}
+              <a
+                href="mailto:hello@xride-labs.in"
+                className="relative rounded-full px-5 py-2 text-[14px] font-bold text-white transition-all overflow-hidden group bg-[var(--accent-red)] shadow-[0_0_20px_rgba(255,45,45,0.5)] border border-[rgba(255,255,255,0.2)]"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  hello@xride-labs.in{" "}
+                  <span className="text-white group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

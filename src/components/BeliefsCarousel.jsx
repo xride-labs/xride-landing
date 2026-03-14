@@ -61,58 +61,29 @@ export default function BeliefsCarousel() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden"
-      style={{ background: "var(--bg)" }}
+      className="relative overflow-hidden bg-[var(--bg)]"
     >
       <div
         ref={trackRef}
-        className="flex gap-4 beliefs-snap-scroll"
-        style={{
-          padding: "0 80px",
-          minHeight: "100vh",
-          alignItems: "center",
-        }}
+        className="flex gap-6 beliefs-snap-scroll px-8 md:px-20 min-h-screen items-center"
       >
         {beliefs.map((belief) => (
           <div
             key={belief.id}
-            className="beliefs-snap-card flex-shrink-0 flex flex-col justify-between rounded-[20px]"
-            style={{
-              width: "clamp(360px, 33vw, 480px)",
-              height: "clamp(560px, 80vh, 800px)",
-              background: "var(--bg-card)",
-              border: "1px solid var(--border)",
-              padding: "36px 40px",
-              transition: "border-color 0.3s ease",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.borderColor = "var(--accent-red)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.borderColor = "var(--border)")
-            }
+            className="beliefs-snap-card flex-shrink-0 flex flex-col justify-between rounded-[20px] w-[clamp(360px,33vw,480px)] h-[clamp(560px,80vh,800px)] bg-[var(--bg-card)] border border-[var(--border)] px-10 py-9 transition-[border-color] duration-300 hover:border-[var(--accent-red)]"
           >
             {/* Top: belief label */}
-            <span className="text-[13px] font-mono" style={{ color: "#444" }}>
+            <span className="text-[13px] font-mono text-[#444]">
               Belief {String(belief.id).padStart(2, "0")}.
             </span>
 
             {/* Bottom: belief statement */}
             <div>
-              <p
-                className="ff-display font-bold leading-[1.3]"
-                style={{
-                  fontSize: "clamp(22px, 2.2vw, 28px)",
-                  color: "var(--text)",
-                }}
-              >
+              <p className="ff-display font-bold leading-[1.3] text-[clamp(22px,2.2vw,28px)] text-[var(--text)]">
                 {belief.text}
               </p>
               {belief.sub && (
-                <p
-                  className="mt-3 text-[12px] font-mono"
-                  style={{ color: "#444" }}
-                >
+                <p className="mt-3 text-[12px] font-mono text-[#444]">
                   {belief.sub}
                 </p>
               )}
