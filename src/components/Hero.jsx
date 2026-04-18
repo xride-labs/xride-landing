@@ -101,8 +101,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="section-shell section-space-lg relative flex min-h-screen items-center justify-center overflow-hidden"
-      style={{ minHeight: "100vh", background: "var(--bg)" }}
+      className="section-shell section-space-lg relative flex min-h-[104dvh] items-center justify-center overflow-hidden bg-[var(--bg)]"
     >
       {/* Graph paper grid (parallax) */}
       <div
@@ -111,11 +110,11 @@ export default function Hero() {
         style={{ height: "140%", top: "-20%" }}
       />
 
-      <div className="section-inner relative z-10 flex flex-col items-center py-10 text-center">
+      <div className="section-inner relative z-10 flex flex-col items-center py-14 md:py-20 text-center">
         {/* Motorcycle Blueprint SVG */}
         <div
           ref={svgRef}
-          className="mb-12"
+          className="mb-14 md:mb-16"
           style={{ width: 460, maxWidth: "90vw" }}
         >
           <MotorcycleSVG />
@@ -139,7 +138,7 @@ export default function Hero() {
         {/* Subtext */}
         <p
           ref={subtextRef}
-          className="section-copy mt-6 max-w-[34rem]"
+          className="section-copy mt-8 max-w-152"
           style={{ opacity: 0 }}
         >
           Xride Labs is the umbrella under which rider-first software and
@@ -150,8 +149,8 @@ export default function Hero() {
         <a
           ref={ctaRef}
           href="mailto:hello@xride-labs.in"
-          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[15px] font-bold cursor-pointer transition-all duration-300 bg-white text-black hover:scale-105 hover:shadow-[0_0_24px_rgba(255,255,255,0.4)] mt-10"
-          style={{ opacity: 0 }}
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-[15px] font-bold cursor-pointer transition-all duration-500 ease-out bg-white text-black hover:scale-105 hover:shadow-[0_0_24px_rgba(255,255,255,0.4)] mt-14"
+          // style={{ opacity: 0 }}
         >
           hello@xride-labs.in →
         </a>

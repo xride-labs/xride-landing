@@ -26,7 +26,7 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="section-header mb-16 md:mb-24 lg:mb-28"
+          className="section-header mb-20 md:mb-28 lg:mb-32"
         >
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
@@ -39,24 +39,24 @@ export default function Products() {
         </Motion.div>
       </div>
 
-      <div className="section-inner-wide overflow-hidden rounded-[2rem] border border-white/10 bg-[#050505]">
-        <div className="grid min-h-[80vh] grid-cols-1 items-stretch border-b border-white/10 lg:grid-cols-2">
+      <div className="section-inner-wide overflow-hidden rounded-[2.2rem] border border-white/10 bg-[#050505]">
+        <div className="grid min-h-[84vh] grid-cols-1 items-stretch border-b border-white/10 lg:grid-cols-2">
           <Motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col justify-center bg-[#080808]/50 px-6 py-16 md:px-12 md:py-20 lg:px-20 lg:py-24"
+            className="flex flex-col justify-center bg-[#080808]/50 px-7 py-18 md:px-14 md:py-24 lg:px-22 lg:py-28"
           >
             <span className="section-kicker mb-6 self-start rounded-full border border-white/10 bg-white/2 px-4 py-2">
               01 / Software
             </span>
 
-            <h3 className="ff-display mb-6 max-w-[18ch] text-[clamp(2rem,4vw,4rem)] font-medium leading-[1.02] tracking-[-0.03em] text-white/96">
+            <h3 className="ff-display mb-7 max-w-[19ch] text-[clamp(2rem,4vw,4rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white/96">
               Zoomies is the operating system for riders.
             </h3>
 
-            <p className="section-copy mb-10 max-w-[34rem]">
+            <p className="section-copy mb-12 max-w-[38rem]">
               Track rides. Find clans. Coordinate group rides. Earn reputation.
               Explore roads together. We are building the ultimate digital
               companion for the open road.
@@ -89,7 +89,7 @@ export default function Products() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="group relative flex min-h-125 w-full items-center justify-center overflow-hidden border-t border-white/10 bg-linear-to-tr from-[#FF2D2D]/10 to-[#080808] p-8 md:p-12 lg:min-h-full lg:border-l lg:border-t-0 lg:p-20"
+            className="group relative flex min-h-125 w-full items-center justify-center overflow-hidden border-t border-white/10 bg-linear-to-tr from-[#FF2D2D]/10 to-[#080808] p-10 md:p-14 lg:min-h-full lg:border-l lg:border-t-0 lg:p-24"
           >
             <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
@@ -100,13 +100,13 @@ export default function Products() {
           </Motion.div>
         </div>
 
-        <div className="grid min-h-[80vh] grid-cols-1 items-stretch lg:grid-cols-2">
+        <div className="grid min-h-[84vh] grid-cols-1 items-stretch lg:grid-cols-2">
           <Motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="group order-2 relative flex min-h-125 w-full items-center justify-center overflow-hidden border-t border-white/10 bg-linear-to-tr from-[#00FFD1]/10 to-[#080808] p-8 md:p-12 lg:order-1 lg:min-h-full lg:border-r lg:border-t-0 lg:p-20"
+            className="group order-2 relative flex min-h-125 w-full items-center justify-center overflow-hidden border-t border-white/10 bg-linear-to-tr from-[#00FFD1]/10 to-[#080808] p-10 md:p-14 lg:order-1 lg:min-h-full lg:border-r lg:border-t-0 lg:p-24"
           >
             <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
@@ -121,17 +121,17 @@ export default function Products() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="order-1 flex flex-col justify-center bg-[#080808]/50 px-6 py-16 md:px-12 md:py-20 lg:order-2 lg:px-20 lg:py-24"
+            className="order-1 flex flex-col justify-center bg-[#080808]/50 px-7 py-18 md:px-14 md:py-24 lg:order-2 lg:px-22 lg:py-28"
           >
             <span className="section-kicker mb-6 self-start rounded-full border border-white/10 bg-white/2 px-4 py-2">
               02 / Physical
             </span>
 
-            <h3 className="ff-display mb-6 max-w-[18ch] text-[clamp(2rem,4vw,4rem)] font-medium leading-[1.02] tracking-[-0.03em] text-white/96">
+            <h3 className="ff-display mb-7 max-w-[19ch] text-[clamp(2rem,4vw,4rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white/96">
               Gearing up riders everywhere with Xride Shop.
             </h3>
 
-            <p className="section-copy mb-10 max-w-[34rem]">
+            <p className="section-copy mb-12 max-w-[38rem]">
               Premium riding gear, custom merchandise, and community designed
               apparel. Form follows function. Everything a modern rider needs.
             </p>

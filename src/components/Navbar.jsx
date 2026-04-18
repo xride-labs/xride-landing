@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[9999] flex items-center justify-between px-6 md:px-12 lg:px-24 py-8 md:py-12 transition-all duration-300 pointer-events-none">
+      <nav className="fixed top-0 left-0 right-0 z-[9999] flex items-center justify-between px-6 md:px-12 lg:px-24 py-8 md:py-11 transition-all duration-500 pointer-events-none">
         {/* ─── Left: Logo badge (always fixed) ─── */}
         <div className="flex pointer-events-auto">
           <Link
@@ -60,12 +60,12 @@ export default function Navbar() {
         >
           <div className="flex-1 flex justify-center h-full">
             {/* ─── Centre: Navigation pill cluster ─── */}
-            <div className="hidden sm:flex items-center gap-6 md:gap-10 rounded-full px-6 py-4 bg-[rgba(17,17,17,0.7)] border border-[rgba(255,255,255,0.06)] shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[10px]">
+            <div className="hidden sm:flex items-center gap-7 md:gap-12 rounded-full px-7 py-4.5 bg-[rgba(17,17,17,0.7)] border border-[rgba(255,255,255,0.06)] shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[10px]">
               {/* Home */}
               <Link
                 to="/"
                 className={cn(
-                  "ff-display flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-200 hover:scale-105",
+                  "ff-display flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-400 ease-out hover:scale-105",
                   isHome
                     ? "text-white bg-[var(--accent-red)]"
                     : "text-[var(--text-muted)] hover:text-white",
@@ -87,7 +87,7 @@ export default function Navbar() {
               <Link
                 to="/notes"
                 className={cn(
-                  "ff-display flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-200 hover:text-white hover:scale-105",
+                  "ff-display flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-400 ease-out hover:text-white hover:scale-105",
                   location.pathname === "/notes"
                     ? "text-white bg-white/5"
                     : "text-[var(--text-muted)]",
@@ -104,7 +104,7 @@ export default function Navbar() {
                 href="https://zoomies.xride-labs.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ff-display px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-200 hover:scale-105 rounded-full text-[var(--text-muted)] hover:text-[var(--accent-teal)] hover:bg-[rgba(0,255,204,0.05)]"
+                className="ff-display px-5 md:px-6 py-2.5 text-[14px] font-bold transition-all duration-400 ease-out hover:scale-105 rounded-full text-[var(--text-muted)] hover:text-[var(--accent-teal)] hover:bg-[rgba(0,255,204,0.05)]"
               >
                 zoomies ↗
               </a>
@@ -130,15 +130,15 @@ export default function Navbar() {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            transition={{ type: "spring", stiffness: 240, damping: 28 }}
             className="fixed top-6 inset-x-0 mx-auto z-8888 flex items-center justify-center pointer-events-none"
           >
-            <div className="flex items-center justify-center gap-6 sm:gap-10 rounded-full px-6 py-3 pointer-events-auto backdrop-blur-xl bg-[rgba(10,10,10,0.85)] border border-[rgba(255,255,255,0.1)] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
-              <div className="flex items-center gap-6 sm:gap-8">
+            <div className="flex items-center justify-center gap-3 sm:gap-10 rounded-full px-4 sm:px-7 py-2.5 sm:py-3.5 pointer-events-auto backdrop-blur-xl bg-[rgba(10,10,10,0.85)] border border-[rgba(255,255,255,0.1)] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center gap-2 sm:gap-8">
                 <Link
                   to="/"
                   className={cn(
-                    "flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold transition-all duration-200 hover:bg-white/10 hover:text-white",
+                    "flex items-center gap-1 sm:gap-2 rounded-full px-3 py-2 text-[12px] sm:text-[14px] font-bold transition-all duration-200 hover:bg-white/10 hover:text-white",
                     isHome ? "text-white bg-white/5" : "text-neutral-400",
                   )}
                 >
@@ -147,7 +147,7 @@ export default function Navbar() {
                 <Link
                   to="/notes"
                   className={cn(
-                    "flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold transition-all duration-200 hover:bg-white/10 hover:text-white",
+                    "flex items-center gap-1 sm:gap-2 rounded-full px-3 py-2 text-[12px] sm:text-[14px] font-bold transition-all duration-200 hover:bg-white/10 hover:text-white",
                     location.pathname === "/notes"
                       ? "text-white bg-white/5"
                       : "text-neutral-400",
@@ -159,7 +159,7 @@ export default function Navbar() {
                   href="https://zoomies.xride-labs.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full px-4 py-2 text-[14px] font-bold text-neutral-400 transition-all duration-200 hover:bg-[rgba(0,255,204,0.1)] hover:text-[var(--accent-teal)]"
+                  className="flex items-center gap-1 sm:gap-2 rounded-full px-3 py-2 text-[12px] sm:text-[14px] font-bold text-neutral-400 transition-all duration-200 hover:bg-[rgba(0,255,204,0.1)] hover:text-[var(--accent-teal)]"
                 >
                   zoomies ↗
                 </a>
@@ -171,7 +171,7 @@ export default function Navbar() {
               {/* Glowing CTA Button */}
               <a
                 href="mailto:hello@xride-labs.in"
-                className="relative rounded-full px-5 py-2 text-[14px] font-bold text-white transition-all overflow-hidden group bg-[var(--accent-red)] shadow-[0_0_20px_rgba(255,45,45,0.5)] border border-[rgba(255,255,255,0.2)]"
+                className="hidden sm:inline-flex relative rounded-full px-5 py-2 text-[14px] font-bold text-white transition-all overflow-hidden group bg-[var(--accent-red)] shadow-[0_0_20px_rgba(255,45,45,0.5)] border border-[rgba(255,255,255,0.2)]"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   hello@xride-labs.in{" "}

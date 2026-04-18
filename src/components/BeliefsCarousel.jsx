@@ -79,14 +79,14 @@ export default function BeliefsCarousel() {
   }, []);
 
   return (
-    <div className="beliefs-carousel-wrapper relative isolate z-20">
+    <div className="beliefs-carousel-wrapper relative isolate z-20 w-screen">
       <section
         ref={sectionRef}
         className="relative w-full overflow-hidden bg-(--bg)"
       >
         <div
           ref={trackRef}
-          className="beliefs-snap-scroll flex min-h-screen items-center gap-6 px-6 py-10 md:px-12 md:py-16 lg:px-24"
+          className="beliefs-snap-scroll flex md:items-center items-start min-h-dvh md:min-h-screen w-full overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none gap-8 px-6 py-12 md:px-14 md:py-20 lg:px-24 pb-18 md:pb-18 hide-scrollbar"
         >
           {beliefs.map((belief) => (
             <div
@@ -95,7 +95,7 @@ export default function BeliefsCarousel() {
                 WebkitBackfaceVisibility: "hidden",
                 WebkitTransform: "translate3d(0, 0, 0)",
               }}
-              className="beliefs-snap-card group relative isolate flex h-[clamp(450px,70vh,600px)] w-[clamp(320px,33vw,420px)] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/8 bg-[#0d0d0d]/95 px-8 py-8 shadow-[0_20px_50px_rgba(0,0,0,0.32)] transition-all duration-500 hover:-translate-y-2 hover:border-[#FF2D2D]/40 hover:shadow-[0_20px_40px_rgba(255,45,45,0.08)] md:px-10 md:py-9"
+              className="beliefs-snap-card snap-center group relative isolate motion-layer flex h-[clamp(430px,67vh,640px)] w-[86vw] md:w-[clamp(360px,34vw,460px)] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/8 bg-[#0d0d0d]/95 px-8 py-9 shadow-[0_20px_50px_rgba(0,0,0,0.32)] transition-all duration-700 ease-out hover:-translate-y-2 hover:border-[#FF2D2D]/40 hover:shadow-[0_20px_40px_rgba(255,45,45,0.08)] md:px-11 md:py-10"
             >
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0)_38%)] opacity-80" />
               <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -111,7 +111,7 @@ export default function BeliefsCarousel() {
                   {belief.text}
                 </p>
                 {belief.sub && (
-                  <p className="mt-4 text-[13px] font-mono leading-relaxed text-white/36">
+                  <p className="mt-5 text-[13px] font-mono leading-relaxed text-white/44">
                     {belief.sub}
                   </p>
                 )}

@@ -7,7 +7,7 @@ export default function BeliefsHeader() {
   return (
     <section
       ref={sectionRef}
-      className="section-shell section-space-lg relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#030303]"
+      className="section-shell section-space-lg relative flex min-h-[104dvh] w-full items-center justify-center overflow-hidden bg-[#030303]"
     >
       {/* Left side illustration */}
       <Motion.div
@@ -131,7 +131,7 @@ export default function BeliefsHeader() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="section-inner relative z-10 flex w-full flex-col items-center justify-center text-center"
+        className="section-inner relative z-10 flex w-full flex-col items-center justify-center text-center px-2"
       >
         {/* Sparkle / asterisk */}
         <div className="mb-8 flex justify-center">
@@ -156,7 +156,7 @@ export default function BeliefsHeader() {
           what we bui<em className="letter font-light text-[#FF2D2D]">l</em>d?
         </h2>
 
-        <p className="section-copy mx-auto mt-8 max-w-[42rem] md:mt-10">
+        <p className="section-copy mx-auto mt-10 max-w-[48rem] md:mt-12">
           We build because we ride. Every product we ship is born from a real
           problem we faced on the road. We do what we do because of the beliefs
           everyone at Xride Labs shares.

@@ -60,12 +60,12 @@ export default function App() {
       if (lenisRef.current) {
         lenisRef.current.scrollTo(0, { immediate: true });
       }
-    }, 50);
+    }, 75);
   };
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.35,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
@@ -99,8 +99,8 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full flex-1 flex flex-col will-change-[opacity]"
+          transition={{ duration: 0.58, ease: [0.16, 1, 0.3, 1] }}
+          className="motion-layer w-full flex-1 flex flex-col"
         >
           <Outlet />
         </Motion.div>

@@ -43,10 +43,10 @@ export default function Footer() {
       className="relative w-full bg-[#030303] border-t border-white/5 shadow-[0_-20px_40px_rgba(0,0,0,0.8)] mt-0 overflow-hidden"
     >
       <div className="section-shell">
-        <div className="section-inner-wide relative z-10 grid w-full grid-cols-1 pb-16 pt-20 md:grid-cols-[58%_42%] md:pt-28">
+        <div className="section-inner-wide relative z-10 grid w-full grid-cols-1 pb-18 pt-24 md:grid-cols-[58%_42%] md:pt-32">
           {/* Left column: Large links */}
           <div className="flex flex-col">
-            <div className="flex flex-col gap-3 md:gap-4">
+            <div className="flex flex-col gap-4 md:gap-5">
               {footerLinks.map((link) => (
                 <Motion.a
                   variants={itemVariants}
@@ -65,7 +65,7 @@ export default function Footer() {
             <Motion.a
               variants={itemVariants}
               href="mailto:hello@xride-labs.in"
-              className="mt-16 md:mt-20 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[14px] font-bold self-start transition-all duration-300 bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+              className="mt-18 md:mt-24 inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-bold self-start transition-all duration-500 bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
             >
               hello@xride-labs.in →
             </Motion.a>
@@ -87,7 +87,7 @@ export default function Footer() {
 
       {/* Legal links row */}
       <div className="section-shell border-t border-[rgba(255,255,255,0.07)]">
-        <div className="section-inner-wide flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6 lg:justify-start">
+        <div className="section-inner-wide flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-7 lg:justify-start">
           {legalLinks.map((link) => (
             <Link
               key={link.label}
@@ -102,7 +102,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="section-shell relative z-10 border-t border-white/10">
-        <div className="section-inner-wide flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
+        <div className="section-inner-wide flex flex-col items-center justify-between gap-4 py-7 sm:flex-row">
           <span className="text-[13px] text-white/40">
             © 2026, Xride Labs. Riders first.
           </span>

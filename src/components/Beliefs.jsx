@@ -36,14 +36,14 @@ export default function BeliefsSection() {
         </h2>
       </TextReveal>
 
-      <div className="space-y-0">
+      <div className="space-y-0 relative z-10 w-full overflow-hidden">
         {beliefs.map((b, i) => (
           <FadeIn key={b.id} delay={i * 0.06}>
-            <div className="belief-row border-t border-border py-10 md:py-14 grid grid-cols-1 md:grid-cols-[80px_1fr] gap-3 md:gap-10 group cursor-default">
-              <p className="ff-heading text-accent/40 text-xs font-bold tracking-[0.15em] group-hover:text-accent transition-colors duration-300">
+            <div className="belief-row border-t border-border py-8 md:py-14 flex flex-col md:grid md:grid-cols-[80px_1fr] gap-2 md:gap-10 group cursor-default">
+              <p className="ff-heading text-accent/40 text-xs font-bold tracking-[0.15em] group-hover:text-accent transition-colors duration-300 mb-2 md:mb-0">
                 {b.id}
               </p>
-              <h3 className="ff-heading text-lg md:text-xl lg:text-2xl font-bold text-white/50 leading-snug max-w-3xl group-hover:text-primary transition-colors duration-300">
+              <h3 className="ff-heading text-xl md:text-xl lg:text-2xl font-bold text-white/50 leading-tight md:leading-snug max-w-3xl group-hover:text-primary transition-colors duration-300">
                 {b.text}
               </h3>
             </div>

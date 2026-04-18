@@ -8,7 +8,7 @@ export default function LegalLayout({ tag, title, lastUpdated, children }) {
         {/* Back */}
         <Link
           to="/"
-          className="group relative mb-10 inline-block text-[14px] text-white/50 transition-colors duration-200 hover:text-white ff-body"
+          className="group relative mb-12 inline-block text-[14px] text-white/50 transition-colors duration-200 hover:text-white ff-body"
         >
           <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
             ←
@@ -21,7 +21,7 @@ export default function LegalLayout({ tag, title, lastUpdated, children }) {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="section-header mb-14"
+          className="section-header mb-16"
         >
           <span className="section-kicker inline-flex w-fit rounded-full border border-[#FF2D2D]/20 bg-[#FF2D2D]/10 px-4 py-2 text-[#FF2D2D] shadow-[0_0_15px_rgba(255,45,45,0.15)]">
             {tag}
@@ -39,7 +39,7 @@ export default function LegalLayout({ tag, title, lastUpdated, children }) {
           initial={{ y: 24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-10"
         >
           {children}
         </Motion.div>
@@ -51,13 +51,13 @@ export default function LegalLayout({ tag, title, lastUpdated, children }) {
 /** Reusable section card */
 export function LegalSection({ title, children }) {
   return (
-    <div className="surface-panel mx-auto w-full max-w-reading rounded-[1.5rem] p-8 transition-colors duration-300 hover:border-[#FF2D2D]/30 hover:shadow-[0_10px_30px_rgba(255,45,45,0.05)]">
+    <div className="surface-panel mx-auto w-full max-w-reading rounded-[1.7rem] p-7 md:p-14 transition-colors duration-500 hover:border-[#FF2D2D]/30 hover:shadow-[0_10px_30px_rgba(255,45,45,0.05)]">
       {title && (
-        <h2 className="ff-display font-bold text-[22px] text-white/90 mb-4 tracking-tight">
+        <h2 className="ff-display font-bold text-[20px] md:text-[24px] text-white/90 mb-7 tracking-tight">
           {title}
         </h2>
       )}
-      <div className="ff-body text-[15px] text-white/60 leading-[1.85] flex flex-col gap-3">
+      <div className="ff-body text-[15px] md:text-[16px] text-white/72 leading-[1.95] flex flex-col gap-6">
         {children}
       </div>
     </div>

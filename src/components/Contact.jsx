@@ -13,11 +13,11 @@ export default function Contact() {
     "If any of our beliefs resonated with you, reach out. We would love to talk.";
 
   return (
-    <section className="section-shell section-space-lg relative flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden border-y border-white/5 bg-[#080808] text-center">
+    <section className="section-shell section-space-lg relative flex min-h-[88vh] w-full flex-col items-center justify-center overflow-hidden border-y border-white/5 bg-[#080808] text-center">
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-t from-[#FF2D2D]/10 to-transparent blur-[100px] rounded-full pointer-events-none -z-10" />
 
-      <div className="section-inner flex flex-col items-center">
+      <div className="section-inner flex flex-col items-center py-6">
         {/* Sketch illustration */}
         <Motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -115,7 +115,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="section-kicker mb-10 md:mb-12"
+          className="section-kicker mb-12 md:mb-14"
         >
           Cold reachouts encouraged
         </Motion.p>
@@ -163,7 +163,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-12 flex flex-wrap justify-center gap-4 md:mt-14"
+          className="mt-14 flex flex-wrap justify-center gap-4 md:mt-16"
         >
           <a
             href="https://twitter.com/xridelabs"
@@ -182,7 +182,7 @@ export default function Contact() {
         </Motion.div>
 
         {/* Social links */}
-        <div className="flex flex-wrap gap-1 mt-8 justify-center items-center text-[14px] text-[var(--text-muted)]">
+        <div className="flex flex-wrap gap-1 mt-10 justify-center items-center text-[14px] text-[var(--text-muted)]">
           {socialLinks.map((link, i) => (
             <Fragment key={link.label}>
               {i > 0 && <span className="mx-2">·</span>}
