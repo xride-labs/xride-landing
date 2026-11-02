@@ -12,8 +12,10 @@ import TermsPage from "./pages/TermsPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
 import RefundPage from "./pages/RefundPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import { initPinwren } from "./lib/pinwren.js";
 
 gsap.registerPlugin(ScrollTrigger);
+initPinwren();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
